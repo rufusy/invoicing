@@ -1,40 +1,24 @@
 <?php
 /**
  * @author Rufusy Idachi <idachirufus@gmail.com>
- * @date: 2/8/2024
- * @time: 12:52 PM
+ * @date: 2/10/2024
+ * @time: 10:42 PM
  */
 
-namespace App\Services\V1;
+namespace App\Filters;
 
 use Illuminate\Http\Request;
 
-class CustomerQuery
+class ApiFilter
 {
     /**
      * Make sure what is in the filter and the operators are what we support.
      */
-    protected array $safeParams = [
-        'name' => ['eq'],
-        'type' => ['eq'],
-        'email' => ['eq'],
-        'address' => ['eq'],
-        'city' => ['eq'],
-        'state' => ['eq'],
-        'postalCode' => ['eq', 'gt', 'lt']
-    ];
+    protected array $safeParams = [];
 
-    protected  array $columnMap = [
-        'postalCode' => 'postal_code'
-    ];
+    protected  array $columnMap = [];
 
-    protected  array $operatorMap = [
-        'eq' => '=',
-        'lt' => '<',
-        'lte' => '<=',
-        'gt' => '>',
-        'gte' => '>='
-    ];
+    protected  array $operatorMap = [];
 
     public function transform(Request $request): array
     {
